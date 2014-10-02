@@ -8,11 +8,10 @@
 
 #import <UIKit/UIKit.h>
 #import "PopUpImageView.h"
+#import "DataModel.h"
 
 @interface CollectionView : UIViewController <UICollectionViewDelegate, UICollectionViewDataSource>
 
-@property (strong, nonatomic) NSMutableArray *imgArrays;
-@property (strong, nonatomic) NSMutableArray *imgNameArrays;
 @property (weak, nonatomic) IBOutlet UIButton *backButton;
 
 

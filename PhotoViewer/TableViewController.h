@@ -11,8 +11,5 @@
 
 @interface TableViewController : UITableViewController
 
-@property (strong, nonatomic) NSArray *firstImagesArray;
-@property (strong, nonatomic) NSArray *secondImageArray;
-@property (strong, nonatomic) NSArray *heroNameArray;
 
 @end

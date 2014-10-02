@@ -31,16 +31,13 @@
     // Configure the view for the selected state
 }
 
--(void) initAndSetImages:(UIImage *)firstImg andSecondImage:(UIImage *)secondImg{
+-(void) initAndSetFirstImages:(UIImage *)firstImg{
     
     if(!_firstImage)
         _firstImage = [[UIImageView alloc] init];
     
-    if (!_secondImage)
-        _secondImage = [[UIImageView alloc] init];
     
     _firstImage.image = firstImg;
-    _secondImage.image = secondImg;
     
     //add tap gesture for first image
     UITapGestureRecognizer *tap = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(handleImageTap:)];
@@ -48,6 +45,14 @@
     tap.numberOfTapsRequired = 1;
     _firstImage.userInteractionEnabled = true;
     [ _firstImage addGestureRecognizer:tap];
+    
+}
+
+-(void) initAndSetSecondImages: (UIImage* ) secondImg{
+    if (!_secondImage)
+        _secondImage = [[UIImageView alloc] init];
+
+        _secondImage.image = secondImg;
     
     //add gesture for second image
     UITapGestureRecognizer *tap2 = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(handleImageTap:)];
@@ -57,6 +62,7 @@
     [_secondImage addGestureRecognizer:tap2];
     
 }
+
 
 - (void) handleImageTap:(UIGestureRecognizer *)gestureRecognizer {
     PopUpImageView *popUpContainer = [[PopUpImageView alloc] init];

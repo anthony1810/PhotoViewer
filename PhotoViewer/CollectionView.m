@@ -20,6 +20,9 @@
     
     //create uiview that contain the imageview
     UIView *demoView;
+    
+    //Data Model
+    DataModel *dataModel;
 }
 
 
@@ -41,13 +44,16 @@
     [super viewDidLoad];
     [[self navigationController] setNavigationBarHidden:true animated:YES];
     
-    currentItemChose = 0;
-    _imgArrays = [[NSMutableArray alloc] initWithObjects:@"enrique1.jpg",@"pa1.jpg",@"troll1.jpg",@"wking1.png",@"wranger1.jpg",@"enrique2.jpg",@"pa2.jpg",@"troll2.jpg",@"wking2.jpg",@"wranger2.jpg", nil];
-    _imgNameArrays = [[NSMutableArray alloc] initWithObjects:@"Enrique Iglesias",@"Phantom Assassin",@"Troll Warlord",@"Wraith King",@"Windranger",@"Enrique iglesias",@"Phantom Assassin",@"Troll Warlord",@"Wraith King",@"Windranger", nil];
+    [self initView];
 
     //add bar button
     self.view.backgroundColor = [UIColor blackColor];
     //[self.navigationController pushViewController:self animated:true];
+}
+
+-(void) initView{
+    currentItemChose = 0;
+    dataModel = [[DataModel alloc] init];
 }
 
 - (void)didReceiveMemoryWarning
@@ -62,13 +68,13 @@
 }
 
 -(NSInteger) collectionView:(UICollectionView *)collectionView numberOfItemsInSection:(NSInteger)section{
-    return _imgArrays.count;
+    return dataModel.count;
 }
 
 -(UICollectionViewCell *) collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath{
     UICollectionViewCell* cell = [collectionView dequeueReusableCellWithReuseIdentifier:@"myCell" forIndexPath:indexPath];
     UIImageView* imgCell = (UIImageView*) [cell viewWithTag:100];
-    imgCell.image=[UIImage imageNamed:[_imgArrays objectAtIndex:indexPath.row]];
+    imgCell.image=[dataModel getImage:indexPath.row];
     
     [cell.layer setBorderWidth:2.0f];
     [cell.layer setBorderColor:[UIColor whiteColor].CGColor];
@@ -89,7 +95,7 @@
 - (void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath{
     NSLog(@"%i", indexPath.row);
     PopUpImageView *popUpContainer = [[PopUpImageView alloc] init];
-    [popUpContainer popUp:[UIImage imageNamed:_imgArrays[indexPath.row]]];
+    [popUpContainer popUp: [dataModel getImage:indexPath.row]];
 }
 
 

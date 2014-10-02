@@ -9,52 +9,34 @@
 #import "DataModel.h"
 
 @implementation DataModel
+{
+    NSArray* imagesArray;
+}
 
 -(instancetype) init{
     
     self = [super init];
     if(self){
         //init array
-        _imagesArray = [[NSMutableArray alloc] init];
-        
-        //populate data into array
-        [_imagesArray addObject:[UIImage imageNamed:@"enrique1.jpg"]];
-        [_imagesArray addObject:[UIImage imageNamed:@"enrique2.jpg"]];
-        [_imagesArray addObject:[UIImage imageNamed:@"pa1.jpg"]];
-        [_imagesArray addObject:[UIImage imageNamed:@"pa2.jpg"]];
-        [_imagesArray addObject:[UIImage imageNamed:@"troll1.jpg"]];
-        [_imagesArray addObject:[UIImage imageNamed:@"troll2.jpg"]];
-        [_imagesArray addObject:[UIImage imageNamed:@"wking1.jpg"]];
-        [_imagesArray addObject:[UIImage imageNamed:@"wking2.jpg"]];
-        [_imagesArray addObject:[UIImage imageNamed:@"wranger1.jpg"]];
-        [_imagesArray addObject:[UIImage imageNamed:@"wranger2.jpg"]];
+        imagesArray = [[NSArray alloc] initWithObjects:[UIImage imageNamed:@"enrique1.jpg"],[UIImage imageNamed:@"enrique2.jpg"],[UIImage imageNamed:@"pa1.jpg"],[UIImage imageNamed:@"pa2.jpg"], [UIImage imageNamed:@"troll1.jpg"],[UIImage imageNamed:@"troll2.jpg"], [UIImage imageNamed:@"wking1.jpg"],[UIImage imageNamed:@"wking2.jpg"], [UIImage imageNamed:@"wranger1.jpg"], [UIImage imageNamed:@"wranger2.jpg"], nil];
     }
     
     return self;
 }
 
 -(int) count{
-    return _imagesArray.count;
+    return imagesArray.count;
 }
 
 -(UIImage *) getImage:(int)index{
     
-    if(_imagesArray == nil){
+    if(imagesArray == nil){
         return nil;
     }else{
-        return _imagesArray[index];
+        return imagesArray[index];
     }
     
 }
 
--(void) addImages:(UIImage *)image{
-    if(_imagesArray != nil)
-        [_imagesArray addObject:image];
-}
-
--(void) removeImages:(UIImage *)image{
-    if(_imagesArray != nil)
-        [_imagesArray removeObject:image];
-}
 
 @end

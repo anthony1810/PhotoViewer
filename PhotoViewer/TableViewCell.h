@@ -14,6 +14,8 @@
 @property (strong, nonatomic) IBOutlet UIImageView *firstImage;
 @property (strong, nonatomic) IBOutlet UIImageView *secondImage;
 
--(void) initAndSetImages: (UIImage* ) firstImg andSecondImage: (UIImage *) secondImg;
+-(void) initAndSetFirstImages: (UIImage* ) firstImg;
+
+-(void) initAndSetSecondImages: (UIImage* ) secondImg;
 
 @end

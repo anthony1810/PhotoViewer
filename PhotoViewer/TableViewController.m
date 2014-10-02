@@ -11,26 +11,28 @@
 
 
 
-@interface TableViewController ()
+@interface TableViewController (){
+    DataModel *dataModel;
+    int positionIndex;
+}
 
 @end
 
 @implementation TableViewController
 
-- (id)initWithStyle:(UITableViewStyle)style
-{
-    self = [super initWithStyle:style];
-    if (self) {
+-(instancetype) init{
+    self = [super init];
+    if(self){
+        
     }
+    
     return self;
 }
 
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-    _firstImagesArray = @[@"enrique1.jpg",@"pa1.jpg",@"troll1.jpg",@"wking1.png",@"wranger1.jpg"];
-    _secondImageArray = @[@"enrique2.jpg",@"pa2.jpg",@"troll2.jpg",@"wking2.jpg",@"wranger2.jpg"];
-    _heroNameArray = @[@"Enrique Iglesias",@"Phantom Assassin",@"Troll Warlord",@"Wraith King",@"Windranger"];
+    dataModel = [[DataModel alloc] init];
 }
 
 - (void)didReceiveMemoryWarning
@@ -49,7 +51,7 @@
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
     // Return the number of rows in the section.
-    return _firstImagesArray.count;
+    return dataModel.count;
 }
 
 
@@ -60,8 +62,8 @@
     
     // Configure the cell...
     long row = [indexPath row];
-    [cell initAndSetImages:[UIImage imageNamed:_firstImagesArray[row]] andSecondImage:[UIImage imageNamed:_secondImageArray[row]]];
-    
+        [cell initAndSetFirstImages:[dataModel getImage:row]];
+    NSLog(@"%li", row);
     return cell;
 }
 
