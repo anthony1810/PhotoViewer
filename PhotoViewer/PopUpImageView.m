@@ -15,21 +15,9 @@
     if (self) {
         _anImage = [[UIImage alloc] init];
         _imageView = [[UIImageView alloc] init];
-        
         _scrollView =[[UIScrollView alloc]init];
-        _scrollView.showsVerticalScrollIndicator=YES;
-        _scrollView.scrollEnabled=YES;
-        _scrollView.userInteractionEnabled=YES;
-        [_scrollView setBouncesZoom:YES];
-        _scrollView.minimumZoomScale=0.5;
-        _scrollView.maximumZoomScale=6.0;
-        _scrollView.contentSize=CGSizeMake(1280, 960);
-        
-        _scrollView.delegate = self.scrollView.delegate;
         _popUpContainer = [[CustomIOS7AlertView alloc] init];
-        
-
-    }
+            }
     return self;
 }
 
@@ -61,17 +49,27 @@
     
     [self setFrame: CGRectMake(0, 0,screenWidth, screenHeight)];
     [_scrollView addSubview:self];
-    
+
     [_popUpContainer setContainerView: _scrollView];
+    
+    self.scrollView.contentSize = image.size;
+    self.scrollView.delegate = self;
+    self.scrollView.minimumZoomScale = 0.5;
+    self.scrollView.maximumZoomScale = 6.0;
+
+    _scrollView.showsVerticalScrollIndicator=YES;
+    _scrollView.scrollEnabled=YES;
+    _scrollView.userInteractionEnabled=YES;
+    [_scrollView setBouncesZoom:YES];
+
     
     // Modify the parameters
     [_popUpContainer setButtonTitles:[NSMutableArray arrayWithObjects:@"Close", nil]];
     
     [_popUpContainer setUseMotionEffects:true];
-    
     // And launch the dialog
     [_popUpContainer show];
-    [self centerscrollViewContents];
+   
     
 }
 
@@ -79,61 +77,16 @@
 - (void)scrollViewDidZoom:(UIScrollView *)scrollView
 {
     
-    // center the image as it becomes smaller than the size of the screen
-    CGSize boundsSize = scrollView.bounds.size;
-    CGRect frameToCenter = self.frame;
-    
-    // center horizontally
-    if (frameToCenter.size.width < boundsSize.width)
-    {
-        frameToCenter.origin.x = (boundsSize.width - frameToCenter.size.width) / 2;
-    } else {
-        frameToCenter.origin.x = 0;
-    }
-    
-    // center vertically
-    if (frameToCenter.size.height < boundsSize.height)
-    {
-        frameToCenter.origin.y = (boundsSize.height - frameToCenter.size.height) / 2;
-    } else {
-        frameToCenter.origin.y = 0;
-    }
-    
-    self.frame = frameToCenter;
-    
-}
-
-
-#pragma mark - Reaction When Double tap a image
-- (void)scrollViewDoubleTapped:(UITapGestureRecognizer*)recognizer {
-    // 1
-    CGPoint pointInView = [recognizer locationInView:self];
-    
-    // 2
-    CGFloat newZoomScale = _scrollView.zoomScale * 1.5f;
-    newZoomScale = MIN(newZoomScale, _scrollView.maximumZoomScale);
-    
-    // 3
-    CGSize scrollViewSize = _scrollView.bounds.size;
-    
-    CGFloat w = scrollViewSize.width / newZoomScale;
-    CGFloat h = scrollViewSize.height / newZoomScale;
-    CGFloat x = pointInView.x - (w / 2.0f);
-    CGFloat y = pointInView.y - (h / 2.0f);
-    
-    CGRect rectToZoomTo = CGRectMake(x, y, w, h);
-    
-    // 4
-    [_scrollView zoomToRect:rectToZoomTo animated:YES];
-    NSLog(@"%@", @"double tap detected!");
+    [self centerscrollViewContents];
+    NSLog(@"%@", @"aftert zoom");
 }
 
 
 #pragma mark - Delegate method for handling pinch
-- (UIView *)viewForZoomingInscrollView:(UIScrollView *)scrollView
+- (UIImageView *)viewForZoomingInScrollView:(UIScrollView *)scrollView
 {
     NSLog(@"%@", @"pinch!");
-    return self;
+    return self.imageView;
 }
 
 
@@ -141,7 +94,7 @@
 
 - (void)centerscrollViewContents {
     CGSize boundsSize = _scrollView.bounds.size;
-    CGRect contentsFrame = _scrollView.frame;
+    CGRect contentsFrame = _popUpContainer.frame;
     
     if (contentsFrame.size.width < boundsSize.width) {
         contentsFrame.origin.x = (boundsSize.width - contentsFrame.size.width) / 2.0f;

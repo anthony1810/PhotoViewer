@@ -62,7 +62,10 @@
     
     // Configure the cell...
     long row = [indexPath row];
-        [cell initAndSetFirstImages:[dataModel getImage:row]];
+    [cell initAndSetFirstImages:[dataModel getImage:row]];
+    
+    [cell initAndSetSecondImages:[dataModel getImage:row]];
+    
     NSLog(@"%li", row);
     return cell;
 }
