@@ -88,93 +88,8 @@
 #pragma mark Reaction When an item is tapped
 - (void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath{
     NSLog(@"%i", indexPath.row);
-    
-    //Pop up view
-    //create UIView
-    demoView = [[UIView alloc] init];
-    
-    //get screen size
-    CGRect screenRect = [[UIScreen mainScreen] bounds];
-    CGFloat screenWidth = screenRect.size.width - 20;
-    CGFloat screenHeight = screenRect.size.height-100;
-    
-    //create Image
-    UIImage *image;
-    
-    //get image original size
-    CGSize imageSize;
-    
-    image = [UIImage imageNamed:_imgArrays[indexPath.row]];
-    imageSize = image.size;
-
-    //        //initialise imageView
-    imageView = [[UIImageView alloc] initWithFrame:CGRectMake(0, 0, imageSize.width, imageSize.height)];
-    [imageView setImage:image];
-    if(imageSize.width <= screenWidth || imageSize.height <=screenHeight){
-        [imageView setFrame:CGRectMake(0, 0, imageSize.width, imageSize.height)];
-        scrollView =[[UIScrollView alloc]initWithFrame:CGRectMake(0,0,imageSize.width,imageSize.height)];
-    }else{
-        [imageView setFrame:CGRectMake(0, 0, screenWidth, screenHeight)];
-        scrollView =[[UIScrollView alloc]initWithFrame:CGRectMake(0,0,screenWidth,screenHeight)];
-    }
-    
-    
-    [demoView setFrame: CGRectMake(0, 0,screenWidth, screenHeight)];
-    
-    //initialise scrollView
-    
-    scrollView.showsVerticalScrollIndicator=YES;
-    scrollView.scrollEnabled=YES;
-    scrollView.userInteractionEnabled=YES;
-    [scrollView setBouncesZoom:YES];
-    scrollView.contentSize = CGSizeMake(imageSize.width,imageSize.height);
-    scrollView.minimumZoomScale=0.5;
-    scrollView.maximumZoomScale=6.0;
-    scrollView.contentSize=CGSizeMake(1280, 960);
-    scrollView.delegate=self;
-    scrollView.autoresizesSubviews = true;
-    //create a view to show picture
-    
-    
-    //add imageview
-    [demoView addSubview:imageView];
-    
-    //add scollview
-    [scrollView addSubview:demoView];
-    
-//    //create a pop up view to contain the above uiview
-//    CustomIOS7AlertView *alertView = [[CustomIOS7AlertView alloc] init];
-//    
-//    // Add some custom content to the alert view
-//    [alertView setContainerView: scrollView];
-//    
-//    // Modify the parameters
-//    [alertView setButtonTitles:[NSMutableArray arrayWithObjects:@"Close", nil]];
-//    
-//    // You may use a Block, rather than a delegate.
-//    //    [alertView setOnButtonTouchUpInside:^(CustomIOS7AlertView *alertView, int buttonIndex) {
-//    //        NSLog(@"Block: Button at position %d is clicked on alertView %d.", buttonIndex, (int)[alertView tag]);
-//    //        [alertView close];
-//    //    }];
-//    
-//    [alertView setUseMotionEffects:true];
-//    
-//    // And launch the dialog
-//    [alertView show];
-//    
-//    currentItemChose = indexPath.row;
-//}
-//
-//
-//#pragma mark Navigation Handle (deprecated)
-//- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
-//{
-//    //showDetailFromCollectionView
-//    if([[segue identifier] isEqualToString:@"showDetailFromCollectionView"]){
-//        PhotoViewController *detailPhotoView = [segue destinationViewController];
-//        long row = currentItemChose;
-//        detailPhotoView.photoDetailModel = @[_imgNameArrays[row],_imgArrays[row], _imgArrays[row]];
-    //}
+    PopUpImageView *popUpContainer = [[PopUpImageView alloc] init];
+    [popUpContainer popUp:[UIImage imageNamed:_imgArrays[indexPath.row]]];
 }
 
 
@@ -186,11 +101,11 @@
 }
 
 #pragma mark Center the imgage after pinch
-- (void)scrollViewDidZoom:(UIScrollView *)scrollView
+- (void)scrollViewDidZoom:(UIScrollView *)scrollView1
 {
     
     // center the image as it becomes smaller than the size of the screen
-    CGSize boundsSize = scrollView.bounds.size;
+    CGSize boundsSize = scrollView1.bounds.size;
     CGRect frameToCenter = imageView.frame;
     
     // center horizontally

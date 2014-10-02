@@ -114,42 +114,6 @@
             </objects>
             <point key="canvasLocation" x="1029" y="-453"/>
         </scene>
-        <!--Photo View Controller - Photo Details-->
-        <scene sceneID="6Up-Jz-bwJ">
-            <objects>
-                <viewController id="R22-Uo-avB" customClass="PhotoViewController" sceneMemberID="viewController">
-                    <view key="view" contentMode="scaleToFill" id="PZg-zu-o6h">
-                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
-                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                        <subviews>
-                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="2N4-iA-Q9V">
-                                <rect key="frame" x="40" y="81" width="234" height="21"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <nil key="highlightedColor"/>
-                            </label>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" id="U87-XF-7O2">
-                                <rect key="frame" x="40" y="119" width="240" height="160"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                            </imageView>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" id="WM0-PT-5p7">
-                                <rect key="frame" x="40" y="287" width="240" height="175"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                            </imageView>
-                        </subviews>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
-                    </view>
-                    <navigationItem key="navigationItem" title="Photo Details" id="eCT-Eu-wK2"/>
-                    <connections>
-                        <outlet property="firstImageView" destination="U87-XF-7O2" id="0qN-1e-kvW"/>
-                        <outlet property="heroNameLabel" destination="2N4-iA-Q9V" id="BOb-W2-qvJ"/>
-                        <outlet property="secondImageView" destination="WM0-PT-5p7" id="hFu-Fb-7fl"/>
-                    </connections>
-                </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="43Y-Ex-zPD" userLabel="First Responder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="670" y="158"/>
-        </scene>
         <!--Navigation Controller-->
         <scene sceneID="Hwa-hW-uWE">
             <objects>

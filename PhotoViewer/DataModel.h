@@ -12,10 +12,9 @@
 
 @property (strong, nonatomic) NSMutableArray* imagesArray;
 
--(void) initData;
-
 -(UIImage *)getImage: (int) index;
 -(void) addImages: (UIImage *) image;
 -(void) removeImages: (UIImage *) image;
+-(int) count;
 
 @end

@@ -25,7 +25,7 @@
         _scrollView.maximumZoomScale=6.0;
         _scrollView.contentSize=CGSizeMake(1280, 960);
         
-        _scrollView.delegate = self;
+        _scrollView.delegate = self.scrollView.delegate;
         _popUpContainer = [[CustomIOS7AlertView alloc] init];
         
 
