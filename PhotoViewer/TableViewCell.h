@@ -12,6 +12,7 @@
 @interface TableViewCell : UITableViewCell
 
 @property (strong, nonatomic) IBOutlet UIImageView *firstImage;
+
 @property (strong, nonatomic) IBOutlet UIImageView *secondImage;
 
 -(void) initAndSetFirstImages: (UIImage* ) firstImg;

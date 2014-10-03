@@ -38,8 +38,9 @@
     if(!_firstImage)
         _firstImage = [[UIImageView alloc] init];
     
-    
     _firstImage.image = firstImg;
+   
+//   [_firstImage setFrame:CGRectMake(0,0,100,100)];
     
     //add tap gesture for first image
     UITapGestureRecognizer *tap = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(handleImageTap:)];
@@ -58,6 +59,7 @@
         _secondImage = [[UIImageView alloc] init];
 
         _secondImage.image = secondImg;
+    //[_secondImage setFrame:CGRectMake(190,0,100,100)];
     
     //add gesture for second image
     UITapGestureRecognizer *tap2 = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(handleImageTap:)];

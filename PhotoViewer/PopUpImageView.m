@@ -43,10 +43,14 @@
         [self setFrame:CGRectMake(0, 0, imageSize.width, imageSize.height)];
         [_imageView setFrame:CGRectMake(0,0,imageSize.width,imageSize.height)];
         _scrollView =[[UIScrollView alloc]initWithFrame:CGRectMake(0,0,imageSize.width,imageSize.height)];
+        
     }else{
         [self setFrame:CGRectMake(0, 0, screenWidth, screenHeight)];
         [_imageView setFrame:CGRectMake(0,0,screenWidth,screenHeight)];
+         _imageView.contentMode = UIViewContentModeScaleAspectFit;
+        [_imageView setBackgroundColor:[UIColor blackColor]];
         _scrollView =[[UIScrollView alloc]initWithFrame:CGRectMake(0,0,screenWidth,screenHeight)];
+       
     }
     [self addSubview:_imageView];
     
@@ -78,18 +82,12 @@
         _scrollView.contentSize = screenRect.size;
     }
    
-   
+    //_scrollView.autoresizesSubviews = true;
    _scrollView.delegate = self;
     _scrollView.minimumZoomScale = 0.5;
    _scrollView.maximumZoomScale = 6.0;
-    
-//    _scrollView.showsVerticalScrollIndicator=YES;
-//    _scrollView.scrollEnabled=YES;
-//    _scrollView.userInteractionEnabled=YES;
-//    [_scrollView setBouncesZoom:YES];
+
     [_scrollView setClipsToBounds:true];
-    //[_scrollView setFrame:self.bounds];
-    //_scrollView.backgroundColor = [UIColor colorWithRed:1.000 green:0.992 blue:0.841 alpha:1.000];
     _scrollView.autoresizingMask = UIViewAutoresizingFlexibleWidth|UIViewAutoresizingFlexibleHeight;
 }
 
@@ -97,13 +95,11 @@
 - (void)scrollViewDidZoom:(UIScrollView *)scrollView
 {
     [self centerContent];
-    NSLog(@"%@", @"aftert zoom");
 }
 
 #pragma mark - Delegate method for handling pinch
 - (UIImageView *)viewForZoomingInScrollView:(UIScrollView *)scrollView
 {
-    NSLog(@"%@", @"pinch!");
     return self.imageView;
 }
 

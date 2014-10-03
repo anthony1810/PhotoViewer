@@ -20,19 +20,20 @@
                                     <rect key="frame" x="0.0" y="0.0" width="287" height="43"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
-                                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" id="JFS-6K-BKi">
-                                            <rect key="frame" x="57" y="0.0" width="65" height="43"/>
-                                            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" id="BA3-Kn-ldy">
+                                            <rect key="frame" x="46" y="0.0" width="80" height="43"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <rect key="contentStretch" x="0.0" y="0.0" width="0.0" height="1"/>
                                         </imageView>
-                                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" id="jJQ-9y-RIx">
-                                            <rect key="frame" x="179" y="0.0" width="64" height="43"/>
-                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" id="T7W-ZZ-hsC">
+                                            <rect key="frame" x="191" y="0.0" width="80" height="43"/>
+                                            <autoresizingMask key="autoresizingMask"/>
                                         </imageView>
                                     </subviews>
                                 </tableViewCellContentView>
                                 <connections>
-                                    <outlet property="firstImage" destination="JFS-6K-BKi" id="NvP-tx-lFv"/>
-                                    <outlet property="secondImage" destination="jJQ-9y-RIx" id="8Dv-fa-IbV"/>
+                                    <outlet property="firstImage" destination="BA3-Kn-ldy" id="K04-3t-aK9"/>
+                                    <outlet property="secondImage" destination="T7W-ZZ-hsC" id="AGr-JW-iIw"/>
                                 </connections>
                             </tableViewCell>
                         </prototypes>
