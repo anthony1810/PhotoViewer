@@ -21,17 +21,16 @@
         _imageView = [[UIImageView alloc] init];
         _scrollView =[[UIScrollView alloc]init];
         _popUpContainer = [[CustomIOS7AlertView alloc] init];
+        //get screen size
+        screenRect = [[UIScreen mainScreen] bounds];
+        screenWidth = screenRect.size.width - 20;
+        screenHeight = screenRect.size.height-100;
             }
     return self;
 }
 
 
 -(void) popUp:(UIImage *)image{
-    
-    //get screen size
-     screenRect = [[UIScreen mainScreen] bounds];
-     screenWidth = screenRect.size.width - 20;
-     screenHeight = screenRect.size.height-100;
     
     _anImage = image;
     [_imageView setImage: _anImage];
@@ -48,17 +47,16 @@
         [self setFrame:CGRectMake(0, 0, screenWidth, screenHeight)];
         [_imageView setFrame:CGRectMake(0,0,screenWidth,screenHeight)];
          _imageView.contentMode = UIViewContentModeScaleAspectFit;
-        [_imageView setBackgroundColor:[UIColor blackColor]];
         _scrollView =[[UIScrollView alloc]initWithFrame:CGRectMake(0,0,screenWidth,screenHeight)];
-       
     }
+    [self setImgViewProperties];
     [self addSubview:_imageView];
     
     [self setFrame: CGRectMake(0, 0,screenWidth, screenHeight)];
     [_scrollView addSubview:self];
 
     [_popUpContainer setContainerView: _scrollView];
-    
+    [self setImgViewProperties];
     [self setScrollViewProperties];
     
     // Modify the parameters
@@ -69,6 +67,10 @@
     [_popUpContainer show];
    
     
+}
+
+-(void) setImgViewProperties{
+    [_imageView setBackgroundColor:[UIColor blackColor]];
 }
 
 -(void) setScrollViewProperties{

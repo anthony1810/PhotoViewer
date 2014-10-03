@@ -11,6 +11,6 @@
 @interface DataModel : NSObject
 
 -(UIImage *)getImage: (int) index;
--(int) count;
+-(int) getImgArraySize;
 
 @end

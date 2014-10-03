@@ -55,7 +55,7 @@
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
 {
     // Return the number of sections.
-    return dataModel.count;
+    return dataModel.getImgArraySize;
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
@@ -69,16 +69,29 @@
 {
     static NSString *cellIdentifier = @"photoTableCell";
     TableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:cellIdentifier forIndexPath:indexPath];
-    
-    if(rowPosition+1 < dataModel.count){
-        [cell initAndSetFirstImages:[dataModel getImage:rowPosition]];
-        rowPosition ++;
-        [cell initAndSetSecondImages:[dataModel getImage:rowPosition]];
-        rowPosition++;
-    }else if(rowPosition < dataModel.count){
-        [cell initAndSetFirstImages:[dataModel getImage:rowPosition]];
+//    
+//    if(rowPosition+1 < dataModel.getImgArraySize){
+//        [cell initAndSetFirstImages:[dataModel getImage:rowPosition]];
+//        rowPosition ++;
+//        [cell initAndSetSecondImages:[dataModel getImage:rowPosition]];
+//        rowPosition++;
+//    }else if(rowPosition < dataModel.getImgArraySize){
+//        [cell initAndSetFirstImages:[dataModel getImage:rowPosition]];
+//        rowPosition++;
+//    }
+//    else if(rowPosition < dataModel.getImgArraySize && rowPosition%2 != 0){
+//        [cell initAndSetFirstImages:[dataModel getImage:rowPosition]];
+//        rowPosition++;
+//    }
+    if(indexPath.section*2+1 < dataModel.getImgArraySize){
+        [cell initAndSetFirstImages:[dataModel getImage:indexPath.section*2]];
+        [cell initAndSetSecondImages:[dataModel getImage:indexPath.section*2+1]];
+    }else if(indexPath.section*2 < dataModel.getImgArraySize){
+        [cell initAndSetFirstImages:[dataModel getImage:indexPath.section*2]];
     }
-    
+        //NSLog(@"%li", indexPath.section);
+//    rowPosition++;
+//     NSLog(@"%li", indexPath.section);
     return cell;
 }
 
@@ -94,11 +107,5 @@
     return headerView;
 }
 
-- (UIView *)tableView:(UITableView *)tableView viewForFooterInSection:(NSInteger)section
-{
-    
-    // To "clear" the footer view
-    return [UIView new];
-}
 
 @end

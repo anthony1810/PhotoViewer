@@ -17,13 +17,13 @@
     
     self = [super init];
     if(self){
-        imagesArray = [[NSArray alloc] initWithObjects:@"enrique1.jpg",@"enrique2.jpg",@"pa1.jpg",@"pa2.jpg", @"troll1.jpg",@"troll2.jpg", @"wking1.png",@"wking2.jpg", @"wranger1.jpg", @"wranger2.jpg", nil];
+        imagesArray = [[NSArray alloc] initWithObjects:@"enrique1.jpg",@"enrique2.jpg",@"pa1.jpg",@"pa2.jpg", @"troll1.jpg",@"troll2.jpg", @"wking1.png",@"wking2.jpg", @"wranger1.jpg", @"wranger2.jpg",@"arthas.jpg",@"illidant.jpg", @"involker.jpg",nil];
     }
     
     return self;
 }
 
--(int) count{
+-(int) getImgArraySize{
     return imagesArray.count;
 }
 
