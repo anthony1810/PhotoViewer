@@ -10,8 +10,7 @@
 #import "CustomIOS7AlertView.h"
 
 
-@interface PopUpImageView : UIView
-
+@interface PopUpImageView : UIView <UIScrollViewDelegate>
 @property (strong, nonatomic) UIScrollView* scrollView;
 @property (strong, nonatomic) CustomIOS7AlertView* popUpContainer;
 
