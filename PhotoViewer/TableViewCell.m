@@ -33,6 +33,8 @@
 
 -(void) initAndSetFirstImages:(UIImage *)firstImg{
     
+    [self setCellPropeties];
+    
     if(!_firstImage)
         _firstImage = [[UIImageView alloc] init];
     
@@ -49,6 +51,9 @@
 }
 
 -(void) initAndSetSecondImages: (UIImage* ) secondImg{
+    
+    [self setCellPropeties];
+    
     if (!_secondImage)
         _secondImage = [[UIImageView alloc] init];
 
@@ -60,6 +65,15 @@
     tap2.numberOfTapsRequired = 1;
     _secondImage.userInteractionEnabled = true;
     [_secondImage addGestureRecognizer:tap2];
+    
+}
+
+-(void) setCellPropeties{
+    
+    //remove arrow
+    self.accessoryType = UITableViewCellAccessoryNone;
+    
+    //set space amongs images
     
 }
 

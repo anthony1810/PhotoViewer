@@ -36,6 +36,12 @@
     AppDelegate* appDelegate = (AppDelegate *)[UIApplication sharedApplication].delegate;
     dataModel = [appDelegate dataModel];
     rowPosition = 0;
+    [self setTableViewPropeties];
+}
+
+-(void) setTableViewPropeties{
+    //remove line seperator
+    self.tableView.separatorStyle = UITableViewCellSeparatorStyleNone;
 }
 
 - (void)didReceiveMemoryWarning
@@ -48,13 +54,13 @@
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
 {
     // Return the number of sections.
-    return 1;
+    return dataModel.count;
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
     // Return the number of rows in the section.
-    return dataModel.count;
+    return 1;
 }
 
 
@@ -73,6 +79,20 @@
     }
     
     return cell;
+}
+
+- (CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section
+{
+    NSLog(@"%@", @"section he");
+    return 10; // you can have your own choice, of course
+}
+
+- (UIView *)tableView:(UITableView *)tableView viewForHeaderInSection:(NSInteger)section
+{
+     NSLog(@"%@", @"section color");
+    UIView *headerView = [[UIView alloc] init];
+    headerView.backgroundColor = [UIColor clearColor];
+    return headerView;
 }
 
 //#pragma mark - Navigation Method
