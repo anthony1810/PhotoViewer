@@ -17,8 +17,7 @@
     
     self = [super init];
     if(self){
-        //init array
-        imagesArray = [[NSArray alloc] initWithObjects:[UIImage imageNamed:@"enrique1.jpg"],[UIImage imageNamed:@"enrique2.jpg"],[UIImage imageNamed:@"pa1.jpg"],[UIImage imageNamed:@"pa2.jpg"], [UIImage imageNamed:@"troll1.jpg"],[UIImage imageNamed:@"troll2.jpg"], [UIImage imageNamed:@"wking1.jpg"],[UIImage imageNamed:@"wking2.jpg"], [UIImage imageNamed:@"wranger1.jpg"], [UIImage imageNamed:@"wranger2.jpg"], nil];
+        imagesArray = [[NSArray alloc] initWithObjects:@"enrique1.jpg",@"enrique2.jpg",@"pa1.jpg",@"pa2.jpg", @"troll1.jpg",@"troll2.jpg", @"wking1.png",@"wking2.jpg", @"wranger1.jpg", @"wranger2.jpg", nil];
     }
     
     return self;
@@ -33,7 +32,7 @@
     if(imagesArray == nil){
         return nil;
     }else{
-        return imagesArray[index];
+        return [UIImage imageNamed: imagesArray[index]];
     }
     
 }

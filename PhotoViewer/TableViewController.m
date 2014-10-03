@@ -13,7 +13,8 @@
 
 @interface TableViewController (){
     DataModel *dataModel;
-    int positionIndex;
+    int rowPosition;
+    int cellDrawingCounter;
 }
 
 @end
@@ -32,7 +33,9 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-    dataModel = [[DataModel alloc] init];
+    AppDelegate* appDelegate = (AppDelegate *)[UIApplication sharedApplication].delegate;
+    dataModel = [appDelegate dataModel];
+    rowPosition = 0;
 }
 
 - (void)didReceiveMemoryWarning
@@ -60,16 +63,17 @@
     static NSString *cellIdentifier = @"photoTableCell";
     TableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:cellIdentifier forIndexPath:indexPath];
     
-    // Configure the cell...
-    long row = [indexPath row];
-    [cell initAndSetFirstImages:[dataModel getImage:row]];
+    if(rowPosition+1 < dataModel.count){
+        [cell initAndSetFirstImages:[dataModel getImage:rowPosition]];
+        rowPosition ++;
+        [cell initAndSetSecondImages:[dataModel getImage:rowPosition]];
+        rowPosition++;
+    }else if(rowPosition < dataModel.count){
+        [cell initAndSetFirstImages:[dataModel getImage:rowPosition]];
+    }
     
-    [cell initAndSetSecondImages:[dataModel getImage:row]];
-    
-    NSLog(@"%li", row);
     return cell;
 }
-
 
 //#pragma mark - Navigation Method
 //- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender

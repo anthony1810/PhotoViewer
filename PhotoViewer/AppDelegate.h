@@ -7,8 +7,11 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "DataModel.h"
 
 @interface AppDelegate : UIResponder <UIApplicationDelegate>
+
+@property (strong, nonatomic) DataModel* dataModel;
 
 @property (strong, nonatomic) UIWindow *window;
 

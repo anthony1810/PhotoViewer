@@ -12,6 +12,7 @@
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
+    _dataModel = [[DataModel alloc] init];
     // Override point for customization after application launch.
     return YES;
 }

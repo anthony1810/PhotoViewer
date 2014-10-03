@@ -53,7 +53,8 @@
 
 -(void) initView{
     currentItemChose = 0;
-    dataModel = [[DataModel alloc] init];
+    AppDelegate* appDelegate = (AppDelegate *)[UIApplication sharedApplication].delegate;
+    dataModel = [appDelegate dataModel];
 }
 
 - (void)didReceiveMemoryWarning
@@ -93,7 +94,6 @@
 
 #pragma mark Reaction When an item is tapped
 - (void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath{
-    NSLog(@"%i", indexPath.row);
     PopUpImageView *popUpContainer = [[PopUpImageView alloc] init];
     [popUpContainer popUp: [dataModel getImage:indexPath.row]];
 }

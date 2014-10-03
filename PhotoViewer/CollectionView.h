@@ -9,6 +9,7 @@
 #import <UIKit/UIKit.h>
 #import "PopUpImageView.h"
 #import "DataModel.h"
+#import "AppDelegate.h"
 
 @interface CollectionView : UIViewController <UICollectionViewDelegate, UICollectionViewDataSource>
 
